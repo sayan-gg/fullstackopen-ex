@@ -1,5 +1,21 @@
 import { useState } from 'react'
 
+
+
+const Footer = ({ votesObj, anecdotesList }) => {
+  if (Object.keys(votesObj).length > 0 ) {
+    const maxIndex = Object.keys(votesObj).reduce((a, b) => votesObj[a] > votesObj[b] ? a : b);
+    console.log(maxIndex);
+    return (
+      <div>
+        <h1>Anecdotes with most votes</h1>
+        <p>{anecdotesList[maxIndex]}</p>
+      </div>
+    )
+  }
+}
+
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -28,11 +44,9 @@ const App = () => {
     setVote(copy)
   }
 
-  const getMostVoted = () => {
-    const maxIndex = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
-    console.log(maxIndex);
-    return anecdotes[maxIndex]
-  }
+
+
+
 
   return (
     <div>
@@ -44,8 +58,7 @@ const App = () => {
       <br></br>
       <button onClick={addVote}>vote</button>
       <button onClick={getRandom}>next anecdote</button>
-      <h1>Anecdote with most votes</h1>
-      <p>{getMostVoted()}</p>
+      <Footer votesObj={votes} anecdotesList={anecdotes} />
     </div>
   )
 }
