@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-
-
 const Footer = ({ votesObj, anecdotesList }) => {
   if (Object.keys(votesObj).length > 0 ) {
     const maxIndex = Object.keys(votesObj).reduce((a, b) => votesObj[a] > votesObj[b] ? a : b);
@@ -14,7 +12,6 @@ const Footer = ({ votesObj, anecdotesList }) => {
     )
   }
 }
-
 
 const App = () => {
   const anecdotes = [
@@ -44,10 +41,6 @@ const App = () => {
     setVote(copy)
   }
 
-
-
-
-
   return (
     <div>
       <h1>Anecdote of the day</h1>
@@ -64,3 +57,6 @@ const App = () => {
 }
 
 export default App
+
+
+
